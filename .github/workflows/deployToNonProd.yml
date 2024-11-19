@@ -13,6 +13,8 @@ on:
           - prod
         type: choice
 
+env:
+ selectedEnv: abc${{ github.event.inputs.environment }}
 
 jobs:
   multiple-deployments:
@@ -26,6 +28,7 @@ jobs:
         run: |
           echo "Event: ${{ github.event_name }}"
           echo "Ref: ${{ github.ref }}"
+          echo "selectedEnv: ${{ env.selectedEnv }}"
 
       - name: Read file contents
         id: read_file
