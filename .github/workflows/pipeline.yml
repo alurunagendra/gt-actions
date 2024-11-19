@@ -1,0 +1,50 @@
+appName: demo-service
+serviceAccount: demo_service_account
+serviceAccountToken: demo_token
+serviceAccountGitToken: demo_token
+compiledCodePath: build/libs/**
+deployments:
+  defaultEnv: abcNonProd
+  abcEphemeral:
+    deploymentName: demo-service-abc-ephemeral
+    apps: APP1,APP2
+    deployTargets:
+      - name: demo-ephemeral
+        namespace: demo-app1-dev
+        helmFile: ./helm/deployConfig/ephemeral/app1.yaml
+        clusterName: nonprod1
+        clusterUrl: https://192.168.1.9:443
+        token: abc-k8s-app1-dev-token
+        cacert: abc-k8s-nonprod1-cacrt
+        app: APP1
+
+      - name: demo-ephemeral
+          namespace: demo-app2-dev
+          helmFile: ./helm/deployConfig/ephemeral/app2.yaml
+          clusterName: nonprod1
+          clusterUrl: https://192.168.1.9:443
+          token: abc-k8s-app2-dev-token
+          cacert: abc-k8s-nonprod1-cacrt
+          app: APP2
+
+  abcNonProd:
+    deploymentName: demo-service-abc-nonprod
+    apps: APP1,APP2
+    deployTargets:
+      - name: demo-nonprod
+        namespace: demo-app1-dev
+        helmFile: ./helm/deployConfig/nonprod/app1.yaml
+        clusterName: nonprod1
+        clusterUrl: https://192.168.1.9:443
+        token: abc-k8s-app1-dev-token
+        cacert: abc-k8s-nonprod1-cacrt
+        app: APP1
+
+      - name: demo-nonprod
+          namespace: demo-app2-dev
+          helmFile: ./helm/deployConfig/nonprod/app2.yaml
+          clusterName: nonprod1
+          clusterUrl: https://192.168.1.9:443
+          token: abc-k8s-app2-dev-token
+          cacert: abc-k8s-nonprod1-cacrt
+          app: APP2

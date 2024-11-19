@@ -1,0 +1,37 @@
+name: Multiple Deployments
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select the environment to deploy"
+        required: true
+        default: nonprod
+        options:
+          - nonprod
+          - test
+          - stage
+          - prod
+        type: choice
+
+
+jobs:
+  multiple-deployments:
+    name: Multiple Deployments
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Debug
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref: ${{ github.ref }}"
+
+      - name: Read file contents
+          id: read_file
+          uses: guibranco/github-file-reader-action-v2@latest
+          with:
+            path: "pipeline.yml"
+
+      - name: File contents
+          run: echo "${ steps.read_file.outputs.contents }"
