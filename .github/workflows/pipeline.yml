@@ -19,13 +19,13 @@ deployments:
         app: APP1
 
       - name: demo-ephemeral
-          namespace: demo-app2-dev
-          helmFile: ./helm/deployConfig/ephemeral/app2.yaml
-          clusterName: nonprod1
-          clusterUrl: https://192.168.1.9:443
-          token: abc-k8s-app2-dev-token
-          cacert: abc-k8s-nonprod1-cacrt
-          app: APP2
+        namespace: demo-app2-dev
+        helmFile: ./helm/deployConfig/ephemeral/app2.yaml
+        clusterName: nonprod1
+        clusterUrl: https://192.168.1.9:443
+        token: abc-k8s-app2-dev-token
+        cacert: abc-k8s-nonprod1-cacrt
+        app: APP2
 
   abcNonProd:
     deploymentName: demo-service-abc-nonprod
@@ -41,10 +41,10 @@ deployments:
         app: APP1
 
       - name: demo-nonprod
-          namespace: demo-app2-dev
-          helmFile: ./helm/deployConfig/nonprod/app2.yaml
-          clusterName: nonprod1
-          clusterUrl: https://192.168.1.9:443
-          token: abc-k8s-app2-dev-token
-          cacert: abc-k8s-nonprod1-cacrt
-          app: APP2
+        namespace: demo-app2-dev
+        helmFile: ./helm/deployConfig/nonprod/app2.yaml
+        clusterName: nonprod1
+        clusterUrl: https://192.168.1.9:443
+        token: abc-k8s-app2-dev-token
+        cacert: abc-k8s-nonprod1-cacrt
+        app: APP2
