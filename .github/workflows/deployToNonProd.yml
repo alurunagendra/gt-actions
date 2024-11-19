@@ -28,10 +28,10 @@ jobs:
           echo "Ref: ${{ github.ref }}"
 
       - name: Read file contents
-          id: read_file
-          uses: guibranco/github-file-reader-action-v2@latest
-          with:
-            path: "pipeline.yml"
+        id: read_file
+        uses: guibranco/github-file-reader-action-v2@latest
+        with:
+          path: "pipeline.yml"
 
       - name: File contents
           run: echo "${ steps.read_file.outputs.contents }"
