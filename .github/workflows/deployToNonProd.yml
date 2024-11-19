@@ -34,4 +34,4 @@ jobs:
           path: ".github/workflows/pipeline.yml"
 
       - name: File contents
-        run: echo "${{ steps.read_file.outputs.contents.deployments.defaultEnv }}"
+        run: echo "${{ steps.read_file.outputs.contents('deployments.defaultEnv') }}"
