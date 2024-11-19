@@ -31,7 +31,7 @@ jobs:
         id: read_file
         uses: guibranco/github-file-reader-action-v2@latest
         with:
-          path: "pipeline.yml"
+          path: ".github/workflows/pipeline.yml"
 
       - name: File contents
         run: echo "${ steps.read_file.outputs.contents }"
